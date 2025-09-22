@@ -8,8 +8,7 @@
 4. [Constructors](#4-constructors)
 5. [The `this` Keyword](#5-the-this-keyword)
 6. [Static Fields and Methods](#6-static-fields-and-methods)
-7. [Overriding the `toString()` Method](#7-overriding-the-tostring-method)
-8. [Summary and Further Reading](#8-summary-and-further-reading)
+7. [Summary and Further Reading](#8-summary-and-further-reading)
 
 ---
 
@@ -536,69 +535,8 @@ classDiagram
 
 ---
 
-## 7. Overriding the `toString()` Method
 
-### Explanation
-
-The `toString()` method in Java is used to provide a string representation of an object. When you print an object, Java internally calls the `toString()` method to get its string form. By default, the `toString()` method in the `Object` class returns the class name followed by the object's hashcode, but you can override this method to provide a more meaningful representation of your object.
-
-### Demo: Overriding `toString()` in the `Book` Class
-
-Let’s implement the `Book` class and override the `toString()` method to display its details neatly.
-
-```java
-public class Book {
-    private String title;
-    private String author;
-    private int pages;
-
-    // Constructor
-    public Book(String title, String author, int pages) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-    }
-
-    // Overriding toString()
-    @Override
-    public String toString() {
-        return "Book: " + title + " by " + author + " (" + pages + " pages)";
-    }
-}
-```
-
-Now, let’s test this in the `Main` class.
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        // Create a Book object
-        Book book1 = new Book("The Hobbit", "J.R.R. Tolkien", 310);
-
-        // Print the book object
-        System.out.println(book1);  // Output: Book: The Hobbit by J.R.R. Tolkien (310 pages)
-    }
-}
-```
-
-### DIY Coding Task: Overriding `toString()` in the `Student` Class
-
-**Objective**: Build upon the `Student` class from previous sections. Override the `toString()` method to provide a meaningful string representation of the student's details.
-
-**Task**:
-
-1. In the `Student` class, override the `toString()` method.
-2. The output should display the `studentID`, `age`, and `isRegistered` fields in a neat format.
-
-**Sample Output when printing a `Student` object**:
-
-```
-Student: ID = S00234, Age = 22, Registered = true
-```
-
----
-
-## 8. Summary and Further Reading
+## 7. Summary and Further Reading
 
 This lab provided a comprehensive introduction to fundamental object-oriented programming concepts in Java.  You learned how to:
 
@@ -606,7 +544,6 @@ This lab provided a comprehensive introduction to fundamental object-oriented pr
 - Create objects using constructors
 - Use the `this` keyword to differentiate between instance variables and parameters, and for constructor chaining
 - Use static fields and methods to represent class-level information and behavior
-- Override the `toString()` method to provide custom string representations
 
 
 ### Further Reading
