@@ -8,7 +8,7 @@
 4. [Constructors](#4-constructors)
 5. [The `this` Keyword](#5-the-this-keyword)
 6. [Static Fields and Methods](#6-static-fields-and-methods)
-7. [Summary and Further Reading](#8-summary-and-further-reading)
+7. [Summary and Further Reading](#7-summary-and-further-reading)
 
 ---
 
