@@ -9,10 +9,11 @@
       "vscode": {
         // List of extensions to install in the container
         "extensions": [
-          "redhat.java", // Language Support for Java(TM) by Red Hat
-          "vscjava.vscode-java-debug", // Debugger for Java
-          "vscjava.vscode-java-dependency", // Project Manager for Java
-          "VisualStudioExptTeam.vscodeintellicode" // Visual Studio IntelliCode
+            "redhat.java",
+            "vscjava.vscode-java-debug",
+            "vscjava.vscode-java-dependency",
+            "VisualStudioExptTeam.vscodeintellicode",
+            "bierner.markdown-mermaid"
         ]
       }
     }
