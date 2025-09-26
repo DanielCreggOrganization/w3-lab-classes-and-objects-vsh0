@@ -1,4 +1,4 @@
-# Java Classes and Objects Lab
+# Classes and Objects Lab
 
 ## Agenda
 
