@@ -7,8 +7,9 @@
 3. [Creating Objects](#3-creating-objects)
 4. [Constructors](#4-constructors)
 5. [The `this` Keyword](#5-the-this-keyword)
-6. [Static Fields and Methods](#6-static-fields-and-methods)
-7. [Summary and Further Reading](#7-summary-and-further-reading)
+6. [Reference Variables vs Object Identity](#6-reference-variables-vs-object-identity)
+7. [Single Responsibility Principle (SRP)](#7-single-responsibility-principle-srp)
+8. [Summary and Further Reading](#8-summary-and-further-reading)
 
 ---
 
@@ -16,22 +17,20 @@
 
 ### Explanation
 
-Object-Oriented Programming (OOP) is a powerful programming paradigm that organizes code around "objects" rather than actions and data.  Instead of focusing on procedures (like in procedural programming), OOP emphasizes *objects* which encapsulate both data (attributes or fields) and the actions that can be performed on that data (methods or functions).  This approach offers several key advantages:
+Object-Oriented Programming (OOP) is a powerful programming paradigm that organizes code around "objects" rather than actions and data. Instead of focusing on procedures (like in procedural programming), OOP emphasizes *objects* which encapsulate both data (attributes or fields) and the actions that can be performed on that data (methods or functions). This approach offers several key advantages:
 
-* **Modularity:**  Code is broken down into reusable objects, making it easier to manage, understand, and maintain large projects.  Changes to one object are less likely to affect others.
+* **Modularity:** Code is broken down into reusable objects, making it easier to manage, understand, and maintain large projects. Changes to one object are less likely to affect others.
 * **Reusability:** Objects can be reused in different parts of a program or even in different projects.
 * **Maintainability:** The modular nature makes debugging and updating code significantly easier.
 * **Scalability:** OOP principles help build programs that can easily handle increasing amounts of data and complexity.
-
 
 In Java, OOP is implemented through the use of *classes* and *objects*.
 
 **Key Concepts:**
 
-- **Classes:**  Think of a class as a blueprint or template. It defines the *structure* (what data an object will hold, represented by fields/attributes/member variables) and *behavior* (what actions an object can perform, represented by methods/functions/member methods) of objects.  It's a description of *what* an object will be.
+* **Classes:** Think of a class as a blueprint or template. It defines the *structure* (what data an object will hold, represented by fields/attributes/member variables) and *behavior* (what actions an object can perform, represented by methods/functions/member methods) of objects.
 
-- **Objects:** Objects are the concrete instances of a class. They are the actual things created based on the class's blueprint.  An object holds specific values for the fields defined in its class and can execute the methods defined in that class.  It's an *instance* of a class.  For example, you could have a `Car` class as a blueprint, and then create many different `Car` *objects*, each representing a specific car with its own make, model, and year.
-
+* **Objects:** Objects are the concrete instances of a class. They are the actual things created based on the class's blueprint. An object holds specific values for the fields defined in its class and can execute the methods defined in that class. For example, you could have a `Car` class as a blueprint, and then create many different `Car` *objects*, each representing a specific car with its own make, model, and year.
 
 ### Example
 
@@ -39,15 +38,15 @@ Consider a simple `Car` class that defines the blueprint for a car object.
 
 ```java
 public class Car {
-  // Fields (attributes)
-  String make;
-  String model;
-  int year;
-   
-  // Methods (behaviors)
-  public void startEngine() {
-    System.out.println("Engine started.");
-  }
+  // Fields (attributes)
+  String make;
+  String model;
+  int year;
+
+  // Methods (behaviors)
+  public void startEngine() {
+    System.out.println("Engine started.");
+  }
 }
 ```
 
@@ -55,17 +54,17 @@ public class Car {
 
 ```mermaid
 classDiagram
-  class Car {
-    - String make
-    - String model
-    - int year
-    + startEngine()
-  }
+  class Car {
+    - String make
+    - String model
+    - int year
+    + startEngine()
+  }
 ```
 
 ### DIY Coding Task
 
-**Objective**: Think about real-world objects and how they can be represented as classes in Java.  Consider attributes (what describes the object) and behaviors (what the object can do).
+**Objective**: Think about real-world objects and how they can be represented as classes in Java. Consider attributes (what describes the object) and behaviors (what the object can do).
 
 **Task**:
 
@@ -77,23 +76,23 @@ classDiagram
 
 ### Explanation
 
-In Java, a class is defined using the `class` keyword, followed by the class name, and enclosed in curly braces `{}`.  Inside the curly braces, you declare the fields (data) and methods (behavior) that define the class.  The `public` keyword means this class is accessible from anywhere.  You'll learn about other access modifiers (like `private`, `protected`) later.
+In Java, a class is defined using the `class` keyword, followed by the class name, and enclosed in curly braces `{}`. Inside the curly braces, you declare the fields (data) and methods (behavior) that define the class. The `public` keyword means this class is accessible from anywhere. You'll learn about other access modifiers (like `private`, `protected`) later.
 
 **Syntax:**
 
 ```java
 public class ClassName {
-  // Fields (instance variables) - data the object holds
-  data_type field1;
-  data_type field2;
+  // Fields (instance variables) - data the object holds
+  data_type field1;
+  data_type field2;
   // ... more fields
 
-  // Methods (member methods) - actions the object can perform
-  return_type method1(parameters) {
+  // Methods (member methods) - actions the object can perform
+  return_type method1(parameters) {
     // method body
   }
   return_type method2(parameters) {
-    //method body
+    // method body
   }
   // ... more methods
 }
@@ -105,14 +104,14 @@ Let's define a `Person` class with some attributes and methods.
 
 ```java
 public class Person {
-  // Fields
-  String name;
-  int age;
+  // Fields
+  String name;
+  int age;
 
-  // Methods
-  public void introduce() {
-    System.out.println("Hi, I'm " + name + " and I'm " + age + " years old.");
-  }
+  // Methods
+  public void introduce() {
+    System.out.println("Hi, I'm " + name + " and I'm " + age + " years old.");
+  }
 }
 ```
 
@@ -120,22 +119,22 @@ public class Person {
 
 ```mermaid
 classDiagram
-  class Person {
-    - String name
-    - int age
-    + introduce()
-  }
+  class Person {
+    - String name
+    - int age
+    + introduce()
+  }
 ```
 
 ### DIY Coding Task
 
-**Objective**: Create a `Student` class.  Remember to consider both attributes (like student ID, age, registration status) and behaviors (like displaying student information).
+**Objective**: Create a `Student` class. Remember to consider both attributes (like student ID, age, registration status) and behaviors (like displaying student information).
 
 **Task**:
 
 1. Define a class named `Student`.
 2. Add fields: `String studentID`, `int age`, `boolean isRegistered`.
-3. Write a method `displayInfo()` that prints the student's details.  Make sure the output is neatly formatted.
+3. Write a method `displayInfo()` that prints the student's details. Make sure the output is neatly formatted.
 
 **Sample Output when `displayInfo()` is called**:
 
@@ -151,7 +150,7 @@ Registered: true
 
 ### Explanation
 
-A class is just a blueprint; to actually use it, you need to create an *object* – an instance of the class.  This is done using the `new` keyword, followed by a call to the class's constructor (we'll cover constructors in detail next).
+A class is just a blueprint; to actually use it, you need to create an *object* – an instance of the class. This is done using the `new` keyword, followed by a call to the class's constructor (we'll cover constructors in detail next).
 
 **Syntax:**
 
@@ -162,11 +161,10 @@ ClassName objectName = new ClassName(); // Using the default constructor
 or
 
 ```java
-ClassName objectName = new ClassName(parameters); //Using a parameterized constructor (explained later)
+ClassName objectName = new ClassName(parameters); // Using a parameterized constructor (explained later)
 ```
 
-
-This creates a new object of type `ClassName` and assigns its reference (memory address) to the variable `objectName`.  You can then access the object's fields and call its methods using the dot operator (`.`).
+This creates a new object of type `ClassName` and assigns its reference (memory address) to the variable `objectName`. You can then access the object's fields and call its methods using the dot operator (`.`).
 
 ### Example
 
@@ -174,15 +172,15 @@ Using the `Person` class defined earlier, let's create an object.
 
 ```java
 public class Main {
-  public static void main(String[] args) {
-    // Creating an object of Person class
-    Person person1 = new Person(); //creates a new person object using the default constructor (assuming it exists).
-    person1.name = "John Doe";
-    person1.age = 25;
+  public static void main(String[] args) {
+    // Creating an object of Person class
+    Person person1 = new Person(); // creates a new person object using the default constructor (assuming it exists).
+    person1.name = "John Doe";
+    person1.age = 25;
 
-    // Calling the method
-    person1.introduce(); // Output: Hi, I'm John Doe and I'm 25 years old.
-  }
+    // Calling the method
+    person1.introduce(); // Output: Hi, I'm John Doe and I'm 25 years old.
+  }
 }
 ```
 
@@ -190,15 +188,15 @@ public class Main {
 
 ```mermaid
 sequenceDiagram
-  participant Main
-  participant Person
-  Main->>Person: new Person()
-  activate Person
-  Person-->>Main: person1 (reference to a Person object)
-  deactivate Person
-  Main->>person1: person1.name = "John Doe"
-  Main->>person1: person1.age = 25
-  Main->>person1: person1.introduce()
+  participant Main
+  participant Person
+  Main->>Person: new Person()
+  activate Person
+  Person-->>Main: person1 (reference to a Person object)
+  deactivate Person
+  Main->>person1: person1.name = "John Doe"
+  Main->>person1: person1.age = 25
+  Main->>person1: person1.introduce()
 ```
 
 ### DIY Coding Task
@@ -209,7 +207,8 @@ sequenceDiagram
 
 1. In a `Main.java` file, write the `main` method (this is where your program execution starts).
 2. Create an instance of `Student`:
-  - Assign values to its fields (`studentID`, `age`, `isRegistered`).  This will require a default constructor, or setting the values after creating the object, as we did in the Person example.
+
+   * Assign values to its fields (`studentID`, `age`, `isRegistered`). This will require a default constructor, or setting the values after creating the object, as we did in the Person example.
 3. Call the `displayInfo()` method to print the student's details.
 
 ---
@@ -218,22 +217,21 @@ sequenceDiagram
 
 ### Explanation
 
-Constructors are special methods within a class that are automatically called when you create a new object using the `new` keyword.  They are used to initialize the object's fields to initial values.  They have the same name as the class and do *not* have a return type (not even `void`).
+Constructors are special methods within a class that are automatically called when you create a new object using the `new` keyword. They are used to initialize the object's fields to initial values. They have the same name as the class and do *not* have a return type (not even `void`).
 
-- **Default Constructor**: If you don't explicitly define any constructors, Java provides a default constructor that does nothing (sets fields to default values like 0 for numbers, `null` for strings, `false` for booleans).
+* **Default Constructor**: If you don't explicitly define any constructors, Java provides a default constructor that does nothing (sets fields to default values like 0 for numbers, `null` for strings, `false` for booleans).
 
-- **Parameterized Constructor**: These allow you to pass values to the constructor when creating an object. This lets you initialize an object with specific values right from the start.
-
+* **Parameterized Constructor**: These allow you to pass values to the constructor when creating an object. This lets you initialize an object with specific values right from the start.
 
 **Default Constructor Example:** (This is what the compiler would create implicitly if you don't define any constructors).
 
 ```java
 public class Person {
-  String name;
-  int age;
+  String name;
+  int age;
 
-  // Default constructor (implicitly provided if you define no constructors)
-  //public Person(){}
+  // Default constructor (implicitly provided if you define no constructors)
+  // public Person(){}
 }
 ```
 
@@ -241,14 +239,14 @@ public class Person {
 
 ```java
 public class Person {
-  String name;
-  int age;
+  String name;
+  int age;
 
-  // Parameterized constructor
-  public Person(String personName, int personAge) {
-    name = personName;
-    age = personAge;
-  }
+  // Parameterized constructor
+  public Person(String personName, int personAge) {
+    name = personName;
+    age = personAge;
+  }
 }
 ```
 
@@ -256,13 +254,13 @@ public class Person {
 
 ```mermaid
 classDiagram
-  class Person {
-    - String name
-    - int age
-    + Person()
-    + Person(String name, int age)
-    + introduce()
-  }
+  class Person {
+    - String name
+    - int age
+    + Person()
+    + Person(String name, int age)
+    + introduce()
+  }
 ```
 
 ### Example
@@ -271,15 +269,15 @@ Using the `Person` class with constructors.
 
 ```java
 public class Main {
-  public static void main(String[] args) {
-    // Using default constructor (implicitly created by compiler, if you define no other constructors)
-    Person person1 = new Person(); //This implicitly calls the parameterless constructor.
-    person1.introduce(); // Output: Hi, I'm null and I'm 0 years old. (or similar, depending on the default values)
+  public static void main(String[] args) {
+    // Using default constructor (implicitly created by compiler, if you define no other constructors)
+    Person person1 = new Person(); // This implicitly calls the parameterless constructor.
+    person1.introduce(); // Output: Hi, I'm null and I'm 0 years old. (or similar, depending on the default values)
 
-    // Using parameterized constructor
-    Person person2 = new Person("Alice", 30);
-    person2.introduce(); // Output: Hi, I'm Alice and I'm 30 years old.
-  }
+    // Using parameterized constructor
+    Person person2 = new Person("Alice", 30);
+    person2.introduce(); // Output: Hi, I'm Alice and I'm 30 years old.
+  }
 }
 ```
 
@@ -290,12 +288,14 @@ public class Main {
 **Task**:
 
 1. In your `Student` class, add:
-  - A default constructor that sets reasonable default values for the fields (`studentID`, `age`, `isRegistered`).  For example, you might set `studentID` to "N/A".
-  - A parameterized constructor that accepts `studentID`, `age`, and `isRegistered` as parameters and initializes the object's fields with those values.
+
+   * A default constructor that sets reasonable default values for the fields (`studentID`, `age`, `isRegistered`). For example, you might set `studentID` to "N/A".
+   * A parameterized constructor that accepts `studentID`, `age`, and `isRegistered` as parameters and initializes the object's fields with those values.
 
 2. Modify your `Main` class to:
-  - Create a `Student` object using the default constructor and call `displayInfo()`.
-  - Create another `Student` object using the parameterized constructor and call `displayInfo()`.
+
+   * Create a `Student` object using the default constructor and call `displayInfo()`.
+   * Create another `Student` object using the parameterized constructor and call `displayInfo()`.
 
 **Sample Output**:
 
@@ -318,20 +318,19 @@ Registered: true
 The `this` keyword is a reference to the current object instance. It's primarily used in two scenarios:
 
 1. **Distinguishing between instance variables and parameters:** When a parameter's name is the same as an instance variable, `this` clarifies which one you're referring to.
-
-2. **Calling other constructors (constructor chaining):**  `this()` can be used inside a constructor to call another constructor of the same class.  This reduces redundancy, particularly if you have several constructors with similar initialization steps.
+2. **Calling other constructors (constructor chaining):** `this()` can be used inside a constructor to call another constructor of the same class. This reduces redundancy, particularly if you have several constructors with similar initialization steps.
 
 **Example Usage (Scenario 1):**
 
 ```java
 public class Person {
-  String name;
-  int age;
+  String name;
+  int age;
 
-  public Person(String name, int age) {
-    this.name = name; // 'this.name' refers to the class field; 'name' refers to the constructor parameter
-    this.age = age;
-  }
+  public Person(String name, int age) {
+    this.name = name; // 'this.name' refers to the class field; 'name' refers to the constructor parameter
+    this.age = age;
+  }
 }
 ```
 
@@ -339,60 +338,57 @@ public class Person {
 
 ```java
 public class Person {
-    String name;
-    int age;
-    String city;
+  String name;
+  int age;
+  String city;
 
-    public Person(String name, int age) {
-        this(name, age, "Unknown"); //calls the constructor below
-    }
+  public Person(String name, int age) {
+    this(name, age, "Unknown"); // calls the constructor below
+  }
 
-    public Person(String name, int age, String city) {
-        this.name = name;
-        this.age = age;
-        this.city = city;
-    }
+  public Person(String name, int age, String city) {
+    this.name = name;
+    this.age = age;
+    this.city = city;
+  }
 }
 ```
-
 
 ### Mermaid Diagram
 
 ```mermaid
 sequenceDiagram
-  participant Person
-  Note right of Person: Constructor call with parameters name and age
-  Person->>Person: this.name = name
-  Person->>Person: this.age = age
+  participant Person
+  Note right of Person: Constructor call with parameters name and age
+  Person->>Person: this.name = name
+  Person->>Person: this.age = age
 ```
 
-### Example
-
-Implementing the `this` keyword in the `Student` class (showing both uses).
+### Example in `Student`
 
 ```java
 public class Student {
-  String studentID;
-  int age;
-  boolean isRegistered;
+  String studentID;
+  int age;
+  boolean isRegistered;
 
-  // Default constructor using this() to call parameterized constructor
-  public Student() {
-    this("N/A", 0, false);
-  }
+  // Default constructor using this() to call parameterized constructor
+  public Student() {
+    this("N/A", 0, false);
+  }
 
-  // Parameterized constructor using 'this'
-  public Student(String studentID, int age, boolean isRegistered) {
-    this.studentID = studentID;
-    this.age = age;
-    this.isRegistered = isRegistered;
-  }
+  // Parameterized constructor using 'this'
+  public Student(String studentID, int age, boolean isRegistered) {
+    this.studentID = studentID;
+    this.age = age;
+    this.isRegistered = isRegistered;
+  }
 
-  public void displayInfo() {
-    System.out.println("Student ID: " + this.studentID);
-    System.out.println("Age: " + this.age);
-    System.out.println("Registered: " + this.isRegistered);
-  }
+  public void displayInfo() {
+    System.out.println("Student ID: " + this.studentID);
+    System.out.println("Age: " + this.age);
+    System.out.println("Registered: " + this.isRegistered);
+  }
 }
 ```
 
@@ -403,152 +399,131 @@ public class Student {
 **Task**:
 
 1. Update your `Student` class:
-  - Ensure that both constructors use the `this` keyword to refer to class fields where appropriate.
-  - In the default constructor, call the parameterized constructor using `this(...)` for constructor chaining.
+
+   * Ensure that both constructors use the `this` keyword to refer to class fields where appropriate.
+   * In the default constructor, call the parameterized constructor using `this(...)` for constructor chaining.
 2. Use `this` in the `displayInfo()` method where appropriate (though it's not strictly necessary here).
 3. Verify that your program still works as expected.
 
 ---
 
-## 6. Static Fields and Methods
+## 6. Reference Variables vs Object Identity
 
 ### Explanation
 
-Static members (fields and methods) belong to the *class itself*, not to any specific object instance of the class.  There's only one copy of a static member, shared by all objects of that class.
+In Java, variables of a class type hold **references** to objects, not the objects themselves. Two different variables can reference the **same** object, or two different objects can have the **same field values** but be distinct in memory.
 
-- **Static Fields (Class Variables):** These are useful for tracking things related to the class as a whole (like a counter of how many objects have been created).
-
-- **Static Methods:** These can be called directly on the class name (without creating an object). They often perform utility functions related to the class.  They *cannot* access instance variables directly because they don't belong to any specific object.
-
-
-**Key Points:**
-
-- Use the `static` keyword to declare static fields or methods.
-- Static methods cannot directly access instance variables (non-static fields) – they only have access to static members.
-
+* `==` compares **reference identity** (are the two references pointing to the *same* object?).
+* `equals()` compares **logical equality** (do the two objects represent the same value/meaning?). By default, `Object.equals()` behaves like `==` unless you override it.
 
 ### Example
 
-#### Counting Instances with a Static Field
+```java
+Student s1 = new Student("S001", 20, true);
+Student s2 = s1; // s2 references the same object as s1
+Student s3 = new Student("S001", 20, true); // same data, different object
 
-Let's modify the `Student` class to keep track of the total number of `Student` objects created.
+System.out.println(s1 == s2);   // true (same identity)
+System.out.println(s1 == s3);   // false (different objects)
+
+System.out.println(s1.equals(s3)); // false unless equals() is overridden
+```
+
+### Overriding `equals()` and `hashCode()`
 
 ```java
 public class Student {
-  // Instance Fields
-  String studentID;
-  int age;
-  boolean isRegistered;
+  String studentID;
+  int age;
+  boolean isRegistered;
 
-  // Static Field (class variable)
-  static int studentCount = 0;
+  // constructors omitted for brevity
 
-  // Parameterized constructor using 'this'
-  public Student(String studentID, int age, boolean isRegistered) {
-    this.studentID = studentID;
-    this.age = age;
-    this.isRegistered = isRegistered;
-    studentCount++; // Increment static counter
-  }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Student other = (Student) o;
+    return studentID != null && studentID.equals(other.studentID);
+  }
 
-  public void displayInfo() {
-    System.out.println("Student ID: " + this.studentID);
-    System.out.println("Age: " + this.age);
-    System.out.println("Registered: " + this.isRegistered);
-  }
-
-  // Static Method (class method)
-  public static int getStudentCount() {
-    return studentCount;
-  }
+  @Override
+  public int hashCode() {
+    return studentID == null ? 0 : studentID.hashCode();
+  }
 }
-```
-
-#### Main.java
-
-```java
-public class Main {
-  public static void main(String[] args) {
-    Student s1 = new Student("S001", 20, true);
-    Student s2 = new Student("S002", 22, false);
-    Student s3 = new Student("S003", 21, true);
-
-    // Display individual student info
-    s1.displayInfo();
-    s2.displayInfo();
-    s3.displayInfo();
-
-    // Access static field via class name
-    System.out.println("Total Students: " + Student.getStudentCount());
-  }
-}
-```
-
-**Sample Output:**
-
-```
-Student ID: S001
-Age: 20
-Registered: true
-Student ID: S002
-Age: 22
-Registered: false
-Student ID: S003
-Age: 21
-Registered: true
-Total Students: 3
-```
-
-### Mermaid Diagram
-
-```mermaid
-classDiagram
-  class Student {
-    - String studentID
-    - int age
-    - boolean isRegistered
-    - static int studentCount
-    + Student(String studentID, int age, boolean isRegistered)
-    + displayInfo()
-    + static getStudentCount() int
-  }
-  class Main {
-    + main(String[] args)
-  }
-  Main --> Student : uses
 ```
 
 ### DIY Coding Task
 
-**Objective**: Practice using static fields and methods.
+**Objective**: Understand identity vs equality.
 
 **Task**:
 
-1. Modify your `Student` class:
-  - Add a static field `studentCount` to keep track of the number of `Student` instances.
-  - Increment `studentCount` in each constructor.
-  - Add a static method `getStudentCount()` that returns the value of `studentCount`.
-2. Update your `Main` class:
-  - Create multiple `Student` objects.
-  - After creating them, print out the total number of students using `Student.getStudentCount()`.
-
+1. Create three `Student` references as in the example (`s1`, `s2`, `s3`) and print the results of `==` and `equals()` before overriding `equals()`.
+2. Implement `equals()` and `hashCode()` in `Student` using `studentID` as the identity key; re-run the comparisons and observe the difference.
+3. (Stretch) Add `toString()` to print a friendly summary of a student.
 
 ---
 
+## 7. Single Responsibility Principle (SRP)
 
-## 7. Summary and Further Reading
+### Explanation
 
-This lab provided a comprehensive introduction to fundamental object-oriented programming concepts in Java.  You learned how to:
+**SRP:** A class should have **one reason to change**. Keep responsibilities focused.
 
-- Define classes and their members (fields and methods)
-- Create objects using constructors
-- Use the `this` keyword to differentiate between instance variables and parameters, and for constructor chaining
-- Use static fields and methods to represent class-level information and behavior
+**Smells indicating SRP violations:**
 
+* A class doing **domain logic + I/O** (e.g., business rules and printing/parsing/saving).
+* Many unrelated methods that change for different reasons (formatting changes vs. business rules).
+
+### Refactor Idea
+
+* Keep `Student` focused on representing student data and related domain behavior.
+* Prefer `toString()` for simple textual representation and print outside the class.
+* If you need parsing or persistence, create `StudentParser` / `StudentRepository`.
+
+### Example
+
+```java
+public class Student {
+  String studentID;
+  int age;
+  boolean isRegistered;
+
+  @Override
+  public String toString() {
+    return "Student{id='" + studentID + "', age=" + age + ", registered=" + isRegistered + "}";
+  }
+}
+
+// elsewhere
+System.out.println(s1.toString()); // or just System.out.println(s1);
+```
+
+### DIY Coding Task
+
+**Objective**: Apply SRP to your design.
+
+**Task**:
+
+1. Refactor `displayInfo()` into a `toString()` method in `Student`.
+2. Move printing to the `main` method (or a `StudentPrinter` utility if you prefer).
+3. (Stretch) Create a `StudentParser` with `Student parse(String csv)` that turns `"S001,20,true"` into a `Student`.
+
+---
+
+## 8. Summary and Further Reading
+
+This lab introduced fundamental object-oriented programming concepts in Java. You learned how to:
+
+* Define classes and their members (fields and methods)
+* Create objects using constructors
+* Use the `this` keyword and constructor chaining
+* Distinguish between **reference identity** (`==`) and **logical equality** (`equals`)
+* Apply the **Single Responsibility Principle (SRP)** to keep classes focused
 
 ### Further Reading
-
-**(Links updated and categorized for better clarity)**
 
 **Official Java Documentation:**
 
@@ -557,24 +532,16 @@ This lab provided a comprehensive introduction to fundamental object-oriented pr
 * [Class Members](https://docs.oracle.com/javase/tutorial/java/javaOO/classvars.html)
 * [Method Overriding](https://docs.oracle.com/javase/tutorial/java/IandI/override.html)
 
-
 **Recommended Books:**
 
 * *Head First Java* by Kathy Sierra & Bert Bates (Excellent for beginners)
 
+**Online Resources (beginner-friendly):**
 
-**Online Resources (More beginner-friendly options):**
-
-* **Constructors:** [W3Schools Java Constructors](https://www.w3schools.com/java/java_constructors.asp)
-* **Static Keyword:** [W3Schools Java Static Keyword](https://www.w3schools.com/java/java_class_members.asp)
-* **`this` Keyword:** [GeeksforGeeks - `this` Keyword in Java](https://www.geeksforgeeks.org/this-reference-in-java/)
-* **`toString()` Method:** [GeeksforGeeks - Overriding `toString()` Method](https://www.geeksforgeeks.org/overriding-tostring-method-in-java/)
-
+* **Constructors:** [https://www.w3schools.com/java/java_constructors.asp](https://www.w3schools.com/java/java_constructors.asp)
+* **`this` Keyword:** [https://www.geeksforgeeks.org/this-reference-in-java/](https://www.geeksforgeeks.org/this-reference-in-java/)
+* **`toString()` Method:** [https://www.geeksforgeeks.org/overriding-tostring-method-in-java/](https://www.geeksforgeeks.org/overriding-tostring-method-in-java/)
 
 ---
 
-**Congratulations!** You've completed the lab. Remember to continue practicing to solidify your understanding.  The next steps in your OOP journey will involve exploring inheritance, polymorphism, and interfaces.  Happy coding!
-
----
-
-# End of Lab
+**Congratulations!** You've completed the lab. Next steps: explore inheritance, polymorphism, and interfaces. Happy coding!
